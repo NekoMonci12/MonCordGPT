@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 from gtts import gTTS
 import openai
-import os
 from pytube import YouTube
 
 # Configure OpenAI API
@@ -12,7 +11,12 @@ openai.api_key = 'YOUR_OPENAI_API_KEY'
 bot_token = 'YOUR_DISCORD_BOT_TOKEN'
 prefix = '!'
 
-bot = commands.Bot(command_prefix=prefix)
+# Define intents
+intents = discord.Intents.default()
+intents.all()
+
+# Create Bot instance with intents
+bot = commands.Bot(command_prefix=prefix, intents=intents)
 
 @bot.event
 async def on_ready():
